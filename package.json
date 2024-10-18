@@ -1,0 +1,26 @@
+{
+  "name": "cron-jober",
+  "version": "0.3.0",
+  "description": "Simple cron app",
+  "engines": {
+    "node": "20.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
