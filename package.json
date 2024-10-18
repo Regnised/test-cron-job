@@ -7,12 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "start": "node index.js"
   },
   "keywords": [
     "node",
@@ -21,7 +16,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "node-cron": "^3.0.3"
+    "pg": "^8.13.0"
   }
 }
