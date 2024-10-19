@@ -18,11 +18,15 @@ const getPrices = async (options) => {
     order: [[options.sortBy || 'createdAt', options.sortType || 'DESC']],
   };
 
-  const results = await BitcoinPrice.findAll(options);
+  const [prices, count] = await Promise.all([
+    BitcoinPrice.findAll(options),
+    BitcoinPrice.count(),
+  ]);
   console.log(`All prices:`);
-  console.log(results);
+  console.log(prices);
+  console.log(count);
 
-  return results;
+  return { prices, count };
 };
 
 export { savePrice, getPrices };

@@ -57,8 +57,13 @@ express()
   })
   .get('/prices', async (req, res) => {
     const { limit, offset, sortBy, sortType } = req.query;
-    const prices = await getPrices({ limit, offset, sortBy, sortType });
+    const { prices, count } = await getPrices({
+      limit,
+      offset,
+      sortBy,
+      sortType,
+    });
 
-    res.json({ status: HttpStatusCode.Ok, data: prices });
+    res.json({ status: HttpStatusCode.Ok, data: { prices, count } });
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
