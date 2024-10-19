@@ -12,6 +12,12 @@ const savePrice = async (price) => {
 };
 
 const getPrices = async (options) => {
+  options = {
+    limit: options.limit || 10,
+    offset: options.offset || 0,
+    order: [[options.sortBy || 'createdAt', options.sortType || 'DESC']],
+  };
+
   const results = await BitcoinPrice.findAll(options);
   console.log(`All prices:`);
   console.log(results);

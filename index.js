@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { HttpStatusCode } from 'axios';
@@ -8,9 +9,7 @@ import {
   getSetting,
   saveSetting,
 } from './src/repositories/settings.repository.js';
-import 'dotenv/config';
 
-console.log(process.env);
 let task;
 const PORT = process.env.PORT || 5001;
 const timeout = await getSetting();
@@ -57,11 +56,8 @@ express()
     });
   })
   .get('/prices', async (req, res) => {
-    const options = {
-      offset: req.query.offset,
-      limit: req.query.limit,
-    };
-    const prices = await getPrices(options);
+    const { limit, offset, sortBy, sortType } = req.query;
+    const prices = await getPrices({ limit, offset, sortBy, sortType });
 
     res.json({ status: HttpStatusCode.Ok, data: prices });
   })
