@@ -1,12 +1,13 @@
-import Pg from 'pg';
+import { Sequelize } from 'sequelize';
 
-const client = new Pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 
-await client.connect();
-
-export { client };
+export { sequelize };
